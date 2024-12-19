@@ -351,9 +351,11 @@ export default function TopicDetailPage() {
       <div className="flex justify-end mt-4 mb-4">
         <div className="p-2 bg-white rounded-lg shadow-md">
           <QRCodeSVG
-            value={`${
-              process.env.NEXT_PUBLIC_APP_URL || window.location.origin
-            }/detailTopic/${topic._id}`}
+            value={
+              typeof window !== 'undefined'
+                ? window.location.href
+                : `${process.env.NEXT_PUBLIC_APP_URL}/detailTopic/${topic._id}`
+            }
             size={100}
             level="H"
             includeMargin={true}
